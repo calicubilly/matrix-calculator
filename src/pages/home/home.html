@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Matrix Calculator
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-slides pager>
+    <ion-slide class="page1">
+      <h1>Enter number of unknowns</h1>
+      <h1></h1>
+
+      <ion-item>
+        <ion-input type="number" placeholder="Please input a number"></ion-input>
+      </ion-item>
+    </ion-slide>
+    <ion-slide>
+      <h1>Enter coefficient and constant</h1>
+      <h1></h1>
+
+      <ion-item>
+        <ion-label>a =</ion-label>
+        <ion-input placeholder="Please input coefficient of a"></ion-input>
+      </ion-item>
+    </ion-slide>
+    <ion-slide>
+      <h1>Select method</h1>
+      <h1></h1>
+      <ion-list radio-group [(ngModel)]="gender">
+        <ion-item>
+          <ion-label>Gaussian Elimination Method</ion-label>
+          <ion-radio value="cord"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Gaus Jordan Elimnination Method</ion-label>
+          <ion-radio value="duesenberg"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Matrix Equation</ion-label>
+          <ion-radio value="hudson"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Cramers Rule</ion-label>
+          <ion-radio value="packard"></ion-radio>
+        </ion-item>
+
+      </ion-list>
+
+      <button ion-button round block (click)="solve()">Calculate</button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>
