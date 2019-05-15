@@ -12,8 +12,16 @@
 
 <ion-content padding>
   <h1>Augemented Matrix</h1>
-  <div class="inprogress"> in progress...</div>
-
+  <!-- <div class="inprogress"> in progress...</div> -->
+  <div *ngFor="let row of matrices; let x = index;">
+    <ion-row>
+      <ion-col *ngFor="let column of row; let y = index">
+        <ion-item class="augmented">
+          {{column}}
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </div>
   <h1>Echelon Form</h1>
   <div class="inprogress"> in progress...</div>
 

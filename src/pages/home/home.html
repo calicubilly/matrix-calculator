@@ -9,44 +9,70 @@
 <ion-content padding>
   <ion-slides pager>
     <ion-slide class="page1">
-      <h1>Enter number of unknowns</h1>
+      <h1>Select number of unknowns</h1>
       <h1></h1>
+      <ion-list radio-group [(ngModel)]="unknowns" (ionChange)="changeSize($event)">
+        <ion-item>
+          <ion-label>2 x 2</ion-label>
+          <ion-radio value="2"></ion-radio>
+        </ion-item>
 
-      <ion-item>
-        <ion-input type="number" placeholder="Please input a number"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label>3 x 3</ion-label>
+          <ion-radio value="3"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>4 x 4</ion-label>
+          <ion-radio value="4"></ion-radio>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>5 x 5</ion-label>
+          <ion-radio value="5"></ion-radio>
+        </ion-item>
+
+      </ion-list>
+
     </ion-slide>
     <ion-slide>
       <h1>Enter coefficient and constant</h1>
       <h1></h1>
 
-      <ion-item>
-        <ion-label>a =</ion-label>
-        <ion-input placeholder="Please input coefficient of a"></ion-input>
-      </ion-item>
+      <div *ngFor="let row of getRows(); let x = index;">
+        <ion-row>
+          <ion-col *ngFor="let column of getSize(); let y = index">
+            <ion-item>
+              <ion-input type="number" [(ngModel)]="matrix[getSize().length * x + y]"> </ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </div>
+
+
     </ion-slide>
     <ion-slide>
       <h1>Select method</h1>
       <h1></h1>
-      <ion-list radio-group [(ngModel)]="gender">
+      <ion-list radio-group [(ngModel)]="method">
         <ion-item>
           <ion-label>Gaussian Elimination Method</ion-label>
-          <ion-radio value="cord"></ion-radio>
+          <ion-radio value="1"></ion-radio>
         </ion-item>
 
         <ion-item>
           <ion-label>Gaus Jordan Elimnination Method</ion-label>
-          <ion-radio value="duesenberg"></ion-radio>
+          <ion-radio value="2"></ion-radio>
         </ion-item>
 
         <ion-item>
           <ion-label>Matrix Equation</ion-label>
-          <ion-radio value="hudson"></ion-radio>
+          <ion-radio value="3"></ion-radio>
         </ion-item>
 
         <ion-item>
           <ion-label>Cramers Rule</ion-label>
-          <ion-radio value="packard"></ion-radio>
+          <ion-radio value="4"></ion-radio>
         </ion-item>
 
       </ion-list>

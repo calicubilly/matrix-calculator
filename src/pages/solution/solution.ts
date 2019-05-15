@@ -14,8 +14,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'solution.html',
 })
 export class SolutionPage {
+  coefficients = [];
+  method: number;
+  unknowns: any;
+  matrix = [];
+  matrices = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.coefficients = this.navParams.data.coefficients;
+    this.method = this.navParams.data.method;
+    this.unknowns = this.navParams.data.unknowns;
+    this.matrix = this.navParams.data.matrix;
+
+    console.log('unknowns => ' + this.unknowns);
+    console.log('matrix => ' + this.matrix);
+    const cut = Number(this.unknowns) + 1;
+    console.log('cut => ' + cut)
+
+    for (let i = 0; i < this.unknowns; i++) {
+      this.matrices[i] = this.matrix.splice(0, cut);
+    }
+
+    console.log(this.matrices)
   }
 
   print() {
