@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-slides pager>
+  <ion-slides pager #sliders>
     <ion-slide class="page1">
       <h1>Select number of unknowns</h1>
       <h1></h1>
@@ -34,6 +34,9 @@
 
       </ion-list>
 
+      <button ion-button round block (click)="move1(sliders)">Next</button>
+
+
     </ion-slide>
     <ion-slide>
       <h1>Enter coefficient and constant</h1>
@@ -49,6 +52,7 @@
         </ion-row>
       </div>
 
+      <button ion-button round block (click)="move2(sliders)">Next</button>
 
     </ion-slide>
     <ion-slide>

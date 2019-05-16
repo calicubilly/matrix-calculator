@@ -23,10 +23,20 @@
     </ion-row>
   </div>
   <h1>Echelon Form</h1>
-  <div class="inprogress"> in progress...</div>
+  <div *ngFor="let row of echelon; let x = index;">
+    <ion-row>
+      <ion-col *ngFor="let column of row; let y = index">
+        <ion-item class="augmented">
+          {{column}}
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </div>
 
   <h1>Answer</h1>
-  <div class="inprogress"> in progress...</div>
+  <div *ngFor="let answer of answers; let x = index;">
+    {{answer}}
+  </div>
 
   <button ion-button round block (click)="print()">Print Solution</button>
 </ion-content>

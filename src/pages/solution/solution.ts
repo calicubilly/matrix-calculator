@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import rref from 'rref';
 
 /**
  * Generated class for the SolutionPage page.
@@ -19,6 +20,8 @@ export class SolutionPage {
   unknowns: any;
   matrix = [];
   matrices = [];
+  echelon = [];
+  answers = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.coefficients = this.navParams.data.coefficients;
@@ -35,7 +38,17 @@ export class SolutionPage {
       this.matrices[i] = this.matrix.splice(0, cut);
     }
 
-    console.log(this.matrices)
+    this.echelon = JSON.parse(JSON.stringify(this.matrices));
+    rref(this.echelon);
+
+    this.answers = this.echelon.map(e => {
+      return e[e.length - 1];
+    })
+
+    console.log(this.answers);
+
+
+
   }
 
   print() {

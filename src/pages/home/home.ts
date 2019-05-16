@@ -19,6 +19,16 @@ export class HomePage {
 
   }
 
+  move1(slides) {
+    console.log(slides)
+    slides.slideTo(1)
+  }
+
+  move2(slides) {
+    console.log(slides)
+    slides.slideTo(2)
+  }
+
   solve() {
     console.log(this.method, this.unknowns, this.coefficients, this.matrix);
     const params = {
@@ -31,8 +41,9 @@ export class HomePage {
   }
 
   changeSize(event) {
+
     this.matrix = this.matrix.map(c => {
-      return '';
+      return null;
     })
 
   }
