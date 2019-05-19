@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Solution</ion-title>
+    <ion-title>{{header}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -17,20 +17,58 @@
     <ion-row>
       <ion-col *ngFor="let column of row; let y = index">
         <ion-item class="augmented">
-          {{column}}
+          {{column | number: '0.0-2'}}
         </ion-item>
       </ion-col>
     </ion-row>
   </div>
-  <h1>Echelon Form</h1>
+  <h1>Row Echelon Form</h1>
   <div *ngFor="let row of echelon; let x = index;">
     <ion-row>
       <ion-col *ngFor="let column of row; let y = index">
         <ion-item class="augmented">
-          {{column}}
+          {{column | number: '0.0-2'}}
         </ion-item>
       </ion-col>
     </ion-row>
+  </div>
+  <div *ngIf="showrref">
+    <h1>Reduced Row Echelon Form</h1>
+    <div *ngFor="let row of rechelon; let x = index;">
+      <ion-row>
+        <ion-col *ngFor="let column of row; let y = index">
+          <ion-item class="augmented">
+            {{column | number: '0.0-2'}}
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+  <div *ngIf="method >= 3">
+    <h1>Inverse Matrix</h1>
+    <div *ngFor="let row of inverse; let x = index;">
+      <ion-row>
+        <ion-col *ngFor="let column of row; let y = index">
+          <ion-item class="augmented">
+            {{column | number: '0.0-2'}}
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div *ngIf="method == 3">
+      <h1>Determinant</h1>
+      <div>
+        {{determinant}}
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="method == 4">
+    <h1>Determinants</h1>
+    <div *ngFor="let det of determinants; let x = index;">
+      {{det}}
+    </div>
   </div>
 
   <h1>Answer</h1>
