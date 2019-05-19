@@ -6,8 +6,8 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-slides pager #sliders>
+<ion-content padding class="content">
+  <ion-slides #sliders>
     <ion-slide class="page1">
       <h1>Select number of unknowns</h1>
       <h1></h1>
@@ -46,7 +46,7 @@
         <ion-row>
           <ion-col *ngFor="let column of getSize(); let y = index">
             <ion-item>
-              <ion-input type="number" [(ngModel)]="matrix[getSize().length * x + y]"> </ion-input>
+              <ion-input [id]="'input' + y" type="number" [(ngModel)]="matrix[getSize().length * x + y]"> </ion-input>
             </ion-item>
           </ion-col>
         </ion-row>

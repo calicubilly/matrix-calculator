@@ -33,6 +33,7 @@
     </ion-row>
   </div>
   <div *ngIf="showrref">
+    <br />
     <h1>Reduced Row Echelon Form</h1>
     <div *ngFor="let row of rechelon; let x = index;">
       <ion-row>
@@ -46,6 +47,8 @@
   </div>
 
   <div *ngIf="method >= 3">
+    <br />
+
     <h1>Inverse Matrix</h1>
     <div *ngFor="let row of inverse; let x = index;">
       <ion-row>
@@ -57,6 +60,8 @@
       </ion-row>
     </div>
     <div *ngIf="method == 3">
+      <br />
+
       <h1>Determinant</h1>
       <div>
         {{determinant}}
@@ -65,6 +70,8 @@
   </div>
 
   <div *ngIf="method == 4">
+    <br />
+
     <h1>Determinants</h1>
     <div *ngFor="let det of determinants; let x = index;">
       {{det}}

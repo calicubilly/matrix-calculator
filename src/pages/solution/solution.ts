@@ -4,6 +4,8 @@ import rref from 'rref';
 import * as math from 'mathjs'
 import Matrix from 'node-matrices'
 
+declare var cordova: any;
+
 /**
  * Generated class for the SolutionPage page.
  *
@@ -41,9 +43,9 @@ export class SolutionPage {
     this.unknowns = this.navParams.data.unknowns;
     this.matrix = this.navParams.data.matrix;
 
-    this.unknowns = '3';
-    this.matrix = ["1", "1", "1", "6", "2", "1", "2", "10", "1", "2", "4", "14"];
-    this.method = 4;
+    // this.unknowns = '3';
+    // this.matrix = ["1", "1", "1", "6", "2", "1", "2", "10", "1", "2", "4", "14"];
+    // this.method = 4;
 
     if (this.method == 1) {
       this.header = 'Gaussian Elimination'
@@ -86,12 +88,22 @@ export class SolutionPage {
     this.calculateRowEchelonForm(this.echelon);
 
     if (this.method >= 3) {
-      this.inverse = JSON.parse(JSON.stringify(this.matrices))
-      this.inverseMatrix(this.inverse);
+      try {
+        this.inverse = JSON.parse(JSON.stringify(this.matrices))
+        this.inverseMatrix(this.inverse);
+      } catch (e) {
+        alert(e);
+      }
+
     }
 
     if (this.method == 4) {
-      this.cramersRule(this.square, this.right);
+      try {
+        this.cramersRule(this.square, this.right);
+
+      } catch (e) {
+        alert(e)
+      }
     }
   }
 
@@ -250,6 +262,16 @@ export class SolutionPage {
   }
 
   print() {
+    cordova.plugins.printer.print();
+    // alert('jere')
+    // let options = {
+    //   documentSize: 'A4',
+    //   type: 'base64'
+    // }
+
+    // cordova.plugins.pdf.fromURL('http://www.google.es', options)
+    //   .then(() => 'ok')
+    //   .catch((err) => console.log(err))
   }
 
   ionViewDidLoad() {

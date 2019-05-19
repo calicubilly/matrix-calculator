@@ -15,6 +15,8 @@ export class HomePage {
 
   matrix = [];
 
+  tmpMatrix = [];
+
   constructor(public navCtrl: NavController) {
 
   }
@@ -29,22 +31,40 @@ export class HomePage {
     slides.slideTo(2)
   }
 
+  ionViewWillEnter() {
+    console.log('ionViewWillEnter')
+    try {
+      const matrix = JSON.parse(localStorage.getItem('matrix'))
+      if (matrix.length > 0) {
+        this.matrix = matrix;
+      }
+    } catch (e) {
+      console.log(e)
+    }
+
+  }
+
   solve() {
     console.log(this.method, this.unknowns, this.coefficients, this.matrix);
+    this.tmpMatrix = this.matrix;
+    localStorage.setItem('matrix', JSON.stringify(this.matrix))
     const params = {
       method: this.method,
       unknowns: this.unknowns,
-      coefficients: this.coefficients,
       matrix: this.matrix
     }
+    console.log(params)
+    console.log('params')
     this.navCtrl.push('SolutionPage', params);
   }
 
   changeSize(event) {
+    console.log('changeSize')
+    localStorage.clear();
 
-    this.matrix = this.matrix.map(c => {
-      return null;
-    })
+    // this.matrix = this.matrix.map(c => {
+    //   return null;
+    // })
 
   }
 
