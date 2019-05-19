@@ -11,22 +11,22 @@
 </ion-header>
 
 <ion-content padding>
-  <h1>Augemented Matrix</h1>
+  <div class="header-txt">AUGMENTED MATRIX</div>
   <!-- <div class="inprogress"> in progress...</div> -->
   <div *ngFor="let row of matrices; let x = index;">
     <ion-row>
       <ion-col *ngFor="let column of row; let y = index">
-        <ion-item class="augmented">
+        <ion-item no-lines class="augmented">
           {{column | number: '0.0-2'}}
         </ion-item>
       </ion-col>
     </ion-row>
   </div>
-  <h1>Row Echelon Form</h1>
+  <div class="header-txt">ROW ECHELON FORM</div>
   <div *ngFor="let row of echelon; let x = index;">
     <ion-row>
       <ion-col *ngFor="let column of row; let y = index">
-        <ion-item class="augmented">
+        <ion-item no-lines class="augmented">
           {{column | number: '0.0-2'}}
         </ion-item>
       </ion-col>
@@ -34,11 +34,11 @@
   </div>
   <div *ngIf="showrref">
     <br />
-    <h1>Reduced Row Echelon Form</h1>
+    <div class="header-txt">REDUCED ROW ECHELON FORM</div>
     <div *ngFor="let row of rechelon; let x = index;">
       <ion-row>
         <ion-col *ngFor="let column of row; let y = index">
-          <ion-item class="augmented">
+          <ion-item no-lines class="augmented">
             {{column | number: '0.0-2'}}
           </ion-item>
         </ion-col>
@@ -49,11 +49,11 @@
   <div *ngIf="method >= 3">
     <br />
 
-    <h1>Inverse Matrix</h1>
+    <div class="header-txt">INVERSE MATRIX</div>
     <div *ngFor="let row of inverse; let x = index;">
       <ion-row>
         <ion-col *ngFor="let column of row; let y = index">
-          <ion-item class="augmented">
+          <ion-item no-lines class="augmented">
             {{column | number: '0.0-2'}}
           </ion-item>
         </ion-col>
@@ -62,26 +62,28 @@
     <div *ngIf="method == 3">
       <br />
 
-      <h1>Determinant</h1>
+      <div class="header-txt">DETERMINANT</div>
       <div>
         {{determinant}}
       </div>
+      <h1></h1>
     </div>
   </div>
 
   <div *ngIf="method == 4">
     <br />
 
-    <h1>Determinants</h1>
+    <div class="header-txt">DETERMINANTS</div>
     <div *ngFor="let det of determinants; let x = index;">
       {{det}}
     </div>
+    <h1></h1>
   </div>
 
-  <h1>Answer</h1>
+  <div class="header-txt">SOLUTION</div>
   <div *ngFor="let answer of answers; let x = index;">
-    {{answer}}
+    {{answer  | number: '0.0-2'}}
   </div>
 
-  <button ion-button round block (click)="print()">Print Solution</button>
+  <button ion-button color="danger" (click)="print()">PRINT</button>
 </ion-content>

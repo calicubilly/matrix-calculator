@@ -23,6 +23,8 @@ export class HomePage {
 
   move1(slides) {
     console.log(slides)
+    this.matrix = [];
+
     slides.slideTo(1)
   }
 
@@ -34,7 +36,7 @@ export class HomePage {
   ionViewWillEnter() {
     console.log('ionViewWillEnter')
     try {
-      const matrix = JSON.parse(localStorage.getItem('matrix'))
+      const matrix = JSON.parse(sessionStorage.getItem('matrix'))
       if (matrix.length > 0) {
         this.matrix = matrix;
       }
@@ -47,7 +49,7 @@ export class HomePage {
   solve() {
     console.log(this.method, this.unknowns, this.coefficients, this.matrix);
     this.tmpMatrix = this.matrix;
-    localStorage.setItem('matrix', JSON.stringify(this.matrix))
+    sessionStorage.setItem('matrix', JSON.stringify(this.matrix))
     const params = {
       method: this.method,
       unknowns: this.unknowns,
@@ -60,7 +62,7 @@ export class HomePage {
 
   changeSize(event) {
     console.log('changeSize')
-    localStorage.clear();
+    sessionStorage.clear();
 
     // this.matrix = this.matrix.map(c => {
     //   return null;

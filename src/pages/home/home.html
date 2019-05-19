@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Matrix Calculator
+      Matrix Solver
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -9,77 +9,75 @@
 <ion-content padding class="content">
   <ion-slides #sliders>
     <ion-slide class="page1">
-      <h1>Select number of unknowns</h1>
+      <div>NO. OF UNKNOWNS</div>
       <h1></h1>
-      <ion-list radio-group [(ngModel)]="unknowns" (ionChange)="changeSize($event)">
+      <!-- <ion-list  radio-group [(ngModel)]="unknowns" (ionChange)="changeSize($event)">
         <ion-item>
-          <ion-label>2 x 2</ion-label>
+          <ion-label>2</ion-label>
           <ion-radio value="2"></ion-radio>
         </ion-item>
 
         <ion-item>
-          <ion-label>3 x 3</ion-label>
+          <ion-label>3</ion-label>
           <ion-radio value="3"></ion-radio>
         </ion-item>
 
         <ion-item>
-          <ion-label>4 x 4</ion-label>
+          <ion-label>4</ion-label>
           <ion-radio value="4"></ion-radio>
         </ion-item>
 
         <ion-item>
-          <ion-label>5 x 5</ion-label>
+          <ion-label>5</ion-label>
           <ion-radio value="5"></ion-radio>
         </ion-item>
 
-      </ion-list>
+      </ion-list> -->
+      <ion-item>
+        <ion-select class="myCustomSelect" placeholder="Please select unknown count" [(ngModel)]="unknowns">
+          <ion-option value="2">2</ion-option>
+          <ion-option value="3">3</ion-option>
+          <ion-option value="4">4</ion-option>
+          <ion-option value="5">5</ion-option>
+        </ion-select>
+      </ion-item>
 
-      <button ion-button round block (click)="move1(sliders)">Next</button>
+
+      <div style="margin-top: 9vw;">Which method?</div>
+      <h1></h1>
+      <ion-item>
+        <ion-select class="myCustomSelect" placeholder="Please select method" [(ngModel)]="method">
+          <ion-option value="1">Gaussian Elimination</ion-option>
+          <ion-option value="2">Gaus Jordan Elimnination</ion-option>
+          <ion-option value="3">Matrix Equation</ion-option>
+          <ion-option value="4">Cramers Rule</ion-option>
+        </ion-select>
+
+      </ion-item>
+
+
+      <button class="btn-input" ion-button color="danger" (click)="move1(sliders)">Input matrix values</button>
 
 
     </ion-slide>
     <ion-slide>
-      <h1>Enter coefficient and constant</h1>
+      <div>Fill the matrix</div>
       <h1></h1>
 
       <div *ngFor="let row of getRows(); let x = index;">
         <ion-row>
           <ion-col *ngFor="let column of getSize(); let y = index">
-            <ion-item>
+            <ion-item no-lines>
               <ion-input [id]="'input' + y" type="number" [(ngModel)]="matrix[getSize().length * x + y]"> </ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
       </div>
 
-      <button ion-button round block (click)="move2(sliders)">Next</button>
+      <button ion-button color="danger" (click)="solve()">SOLVE</button>
 
     </ion-slide>
     <ion-slide>
-      <h1>Select method</h1>
-      <h1></h1>
-      <ion-list radio-group [(ngModel)]="method">
-        <ion-item>
-          <ion-label>Gaussian Elimination Method</ion-label>
-          <ion-radio value="1"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Gaus Jordan Elimnination Method</ion-label>
-          <ion-radio value="2"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Matrix Equation</ion-label>
-          <ion-radio value="3"></ion-radio>
-        </ion-item>
-
-        <ion-item>
-          <ion-label>Cramers Rule</ion-label>
-          <ion-radio value="4"></ion-radio>
-        </ion-item>
-
-      </ion-list>
 
       <button ion-button round block (click)="solve()">Calculate</button>
     </ion-slide>
